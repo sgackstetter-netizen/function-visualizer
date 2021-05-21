@@ -10,11 +10,12 @@ function App() {
   };
 
   const loaderClick = () => {
-    document.getElementById("loader")!.style.removeProperty('transition');
+    document.getElementById("loader")!.classList.add("no-transition");
     document.getElementById("loader")!.style["background-position"] =
       "left bottom";
-    document.getElementById("loader")!.style.transition =
-    "all 2s ease";
+    var reset = document.getElementById("loader")!.offsetHeight;
+    console.log(reset);
+    document.getElementById("loader")!.classList.remove("no-transition");
     document.getElementById("loader")!.style["background-position"] =
       "right bottom";
   };
