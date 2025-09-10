@@ -39,7 +39,7 @@ function App() {
       timeout = setTimeout(later, time);
     };
   }
-
+    // typical debounce is .5 sec or .2 if search cost is low
   let debouncedAdd = debouncedFunc(add, 2000);
   return (
     <div className="App">
@@ -49,11 +49,28 @@ function App() {
           loaderClick();
         }}
       >
-        Debounced Add
+        Debounced Key Press
       </button>
-      <button onClick={add}>Regular Add</button>
+        <div>
+            <h1>
+                Debounced Search
+            </h1>
+            <input onChange={() => {
+                debouncedAdd();
+                loaderClick();
+            }}></input>
+        </div>
+      <button onClick={add}>Non-debounced Key Press</button>
+        <div style={{marginBottom: '20px'}}>
+            <h1>
+                Non-Debounced Search
+            </h1>
+            <input onChange={() => {
+                add()
+            }}></input>
+        </div>
       <LoadBar />
-      <p id="count">{count}</p>
+      <p id="count">{'Search Count ' + count}</p>
     </div>
   );
 }
